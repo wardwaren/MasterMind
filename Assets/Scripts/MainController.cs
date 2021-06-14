@@ -17,7 +17,7 @@ public class MainController : MonoBehaviour
     
     private float textBlinkTime = 1.0f;
     
-    public bool inited = false;
+    [HideInInspector] public bool inited = false;
     
     private void Start()
     {
