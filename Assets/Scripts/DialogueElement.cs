@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueElement : MonoBehaviour
 {
     [SerializeField] private Dialogue dialogue;
     [SerializeField] private DialogManager dialogManager;
     [SerializeField] private GameObject dialoguePanel;
-
+    
+    
     public Action onDialogueBegin;
 
     private void Start()
