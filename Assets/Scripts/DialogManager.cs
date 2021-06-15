@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,6 +17,7 @@ public class DialogManager : MonoBehaviour
     
     private Queue<string> sentences;
     private bool typing = false;
+    private bool reading = false;
     
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,8 @@ public class DialogManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
+        reading = true;
+        
         DisplayNextSentence();
     }
 
@@ -53,7 +57,7 @@ public class DialogManager : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
     }
 
-    IEnumerator TypeSentence(string sentence)
+    public IEnumerator TypeSentence(string sentence, Action callback = null, float waitSeconds = 0.0f)
     {
         typing = true;
         mainText.text = "";
@@ -65,16 +69,23 @@ public class DialogManager : MonoBehaviour
         }
 
         typing = false;
+
+        if (callback != null)
+        {
+            yield return new WaitForSeconds(waitSeconds);
+            callback.Invoke();
+        }
     }
     
     private void EndDialogue()
     {
         gameControl.GuessQuestion();
+        reading = false;
     }
 
     private void FixedUpdate()
     {
-        if (Input.anyKey && mainController.inited && !typing)
+        if (Input.anyKey && reading && !typing)
         {
             DisplayNextSentence();
         }
