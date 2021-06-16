@@ -156,12 +156,19 @@ public class GameControl : MonoBehaviour
     
     private void PruneCombinations()
     {
+        List<string> toDelete = new List<string>();
+        
         foreach (var permutation in possiblePermutations)
         {
-            if (!CompareBullsCows(currentGuess, permutation, currentCows, currentBulls))
+            if (!CompareBullsCows(currentGuess, permutation))
             {
-                possiblePermutations.Remove(permutation);
+                toDelete.Add(permutation);
             }
+        }
+
+        foreach (var permutation in toDelete)
+        {
+            possiblePermutations.Remove(permutation);
         }
     }
 
@@ -183,9 +190,21 @@ public class GameControl : MonoBehaviour
         }
     }
     
-    private bool CompareBullsCows(string a, string b, int cows, int bulls)
+    private bool CompareBullsCows(string current, string toCompare)
     {
-        return true;
+        int compBulls = 0;
+        int compCows = 0;
+
+        for (int i = 0; i < current.Length; i++)
+        {
+            if (current[i] == toCompare[i]) compCows++;
+            
+            for (int j = 0; j < toCompare.Length; j++)
+            {
+                if (j != i && current[i] == toCompare[j]) compBulls++;
+            }
+        }
+        return compBulls == currentBulls && compCows == currentCows;
     }
 
     private void ReloadScene()
