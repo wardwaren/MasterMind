@@ -11681,63 +11681,6 @@ MonoBehaviour:
   mainController: {fileID: 1446471585}
   gameControl: {fileID: 598424229}
   characterAnimator: {fileID: 1986020077}
---- !u!1001 &598679410
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: a5d2edf5916177146a0150940575f847, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a5d2edf5916177146a0150940575f847, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.431
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a5d2edf5916177146a0150940575f847, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.00000011920929
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a5d2edf5916177146a0150940575f847, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 35.99
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a5d2edf5916177146a0150940575f847, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a5d2edf5916177146a0150940575f847, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a5d2edf5916177146a0150940575f847, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a5d2edf5916177146a0150940575f847, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a5d2edf5916177146a0150940575f847, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a5d2edf5916177146a0150940575f847, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a5d2edf5916177146a0150940575f847, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: a5d2edf5916177146a0150940575f847, type: 3}
-      propertyPath: m_Name
-      value: Mastermind
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a5d2edf5916177146a0150940575f847, type: 3}
 --- !u!1001 &600129898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30065,7 +30008,7 @@ MonoBehaviour:
   textCanvas: {fileID: 415903228}
   beginDisplay: {fileID: 1069043881}
   mainCamera: {fileID: 699876804}
-  mastermindModel: {fileID: 1986020076}
+  mastermindModel: {fileID: 919132148678664739}
   mastermindPosition: {fileID: 1443007946}
   dialogueController: {fileID: 1986020078}
   inited: 0
@@ -40894,51 +40837,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4155442426263646, guid: 8ec4bc96866a5bb4f90106a29dfd3d01, type: 3}
   m_PrefabInstance: {fileID: 1979577220}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1986020076 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a5d2edf5916177146a0150940575f847, type: 3}
-  m_PrefabInstance: {fileID: 598679410}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1986020077
+--- !u!95 &1986020077 stripped
 Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8983638236740870834, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+  m_PrefabInstance: {fileID: 8983638238659747935}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986020076}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 290504fa0c647b04e88f9b80dfaef655, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1986020078
+--- !u!114 &1986020078 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8983638236740870833, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+  m_PrefabInstance: {fileID: 8983638238659747935}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986020076}
+  m_GameObject: {fileID: 919132148678664739}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86f4b741caac6414fb626e81803ceb24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    sentences:
-    - Welcome to the ship captain.
-    - I am an advanced ai system that will help you setup your configuration.
-    - Let's begin from creating a password.
-    - Imagine a simple four digit password and i will try to guess it.
-    - The password must not contain repeating digits.
-  dialogManager: {fileID: 598424231}
-  dialoguePanel: {fileID: 873300641}
 --- !u!1001 &1986862403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44520,3 +44434,73 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4103005683910908, guid: 493857c1d7678b642bc712689b449ca6, type: 3}
   m_PrefabInstance: {fileID: 2145450311}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &919132148678664739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8101169447010304636, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+  m_PrefabInstance: {fileID: 8983638238659747935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8983638238659747935
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8101169447010304636, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: m_Name
+      value: Mastermind
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874046318540773574, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874046318540773574, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.431
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874046318540773574, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874046318540773574, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 35.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874046318540773574, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874046318540773574, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874046318540773574, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874046318540773574, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874046318540773574, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874046318540773574, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874046318540773574, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8983638236740870833, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: dialogManager
+      value: 
+      objectReference: {fileID: 598424231}
+    - target: {fileID: 8983638236740870833, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}
+      propertyPath: dialoguePanel
+      value: 
+      objectReference: {fileID: 873300641}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76926a050ec42a34cbee65fabf8cbdfb, type: 3}

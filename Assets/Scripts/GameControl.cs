@@ -65,7 +65,7 @@ public class GameControl : MonoBehaviour
         currentBulls = 0;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (listeningForCows)
         {
@@ -102,8 +102,7 @@ public class GameControl : MonoBehaviour
             return;
         }
         string introSentence = "Is your password " + currentGuess + "?";
-        StartCoroutine(dialogManager.TypeSentence(introSentence,null, 1.0f));
-        ShowButtons(true);
+        StartCoroutine(dialogManager.TypeSentence(introSentence,(() => ShowButtons(true)), 1.0f));
     }
     
     public void CorrectGuess()
