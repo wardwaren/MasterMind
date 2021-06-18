@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 // Add dialogue with currentGuess, start animation, display answer buttons ->
 // if yes -> add dialogue and stop game
@@ -16,6 +17,7 @@ public class GameControl : MonoBehaviour
     [SerializeField] private DialogManager dialogManager;
     [SerializeField] private CanvasGroup yesButton;
     [SerializeField] private CanvasGroup noButton;
+    [SerializeField] private GameObject currentGuessPanel;
     [SerializeField] private Animator characterAnimator;
     
     private HashSet<string> possiblePermutations;
@@ -127,7 +129,7 @@ public class GameControl : MonoBehaviour
 
     private void AskForCows()
     {
-        string cowsSentence = "How many digits are in the right position now?";
+        string cowsSentence = "How many digits are in the right position now? (Type a number)";
         
         StopAllCoroutines();
         StartCoroutine(dialogManager.TypeSentence(cowsSentence,(() => listeningForCows = true)));
@@ -136,7 +138,7 @@ public class GameControl : MonoBehaviour
     private void AskForBulls()
     {
         listeningForCows = false;
-        string bullsSentence = "How many digits are correct but in the wrong position?";
+        string bullsSentence = "How many digits are correct but in the wrong position? (Type a number)";
         
         StopAllCoroutines();
         StartCoroutine(dialogManager.TypeSentence(bullsSentence, () => listeningForBulls = true));
@@ -146,7 +148,7 @@ public class GameControl : MonoBehaviour
     {
         listeningForBulls = false;
         PruneCombinations();
-        
+        currentGuessPanel.GetComponent<CanvasGroup>().DOFade(0.0f, 2.0f);
         currentGuess = possiblePermutations.First();
         string losingSentence = "Let me try another number";
         
@@ -178,6 +180,8 @@ public class GameControl : MonoBehaviour
         {
             yesButton.DOFade(1.0f, 2.0f);
             noButton.DOFade(1.0f, 2.0f);
+            currentGuessPanel.GetComponentInChildren<TextMeshProUGUI>().text = "Current guess: " + currentGuess;
+            currentGuessPanel.GetComponent<CanvasGroup>().DOFade(1.0f, 2.0f);
             yesButton.interactable = true;
             noButton.interactable = true;
         }
@@ -207,9 +211,13 @@ public class GameControl : MonoBehaviour
         return compBulls == currentBulls && compCows == currentCows;
     }
 
-    private void ReloadScene()
+    public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    
+
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
 }
