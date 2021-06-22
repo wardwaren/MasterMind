@@ -8,10 +8,6 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 
-// Add dialogue with currentGuess, start animation, display answer buttons ->
-// if yes -> add dialogue and stop game
-// if no -> add dialogue with guess and return to 1
-
 public class GameControl : MonoBehaviour
 {
     [SerializeField] private DialogManager dialogManager;
@@ -21,6 +17,8 @@ public class GameControl : MonoBehaviour
     [SerializeField] private Animator characterAnimator;
     
     private HashSet<string> possiblePermutations;
+    private Dictionary<string, int> permutationScores;
+    
     private KeyCode[] keyCodes = {
         KeyCode.Alpha0,
         KeyCode.Alpha1,
@@ -35,7 +33,7 @@ public class GameControl : MonoBehaviour
     private bool listeningForCows = false;
     private bool listeningForBulls = false;
     private static readonly int StartThinking = Animator.StringToHash("StartThinking");
-
+    
     private void Start()
     {
         possiblePermutations = new HashSet<string>();
@@ -149,20 +147,63 @@ public class GameControl : MonoBehaviour
         listeningForBulls = false;
         PruneCombinations();
         currentGuessPanel.GetComponent<CanvasGroup>().DOFade(0.0f, 2.0f);
-        currentGuess = possiblePermutations.First();
+        currentGuess = makeGuess();
         string losingSentence = "Let me try another number";
         
         StopAllCoroutines();
         StartCoroutine(dialogManager.TypeSentence(losingSentence, GuessQuestion, 1.0f));
     }
     
+    private string makeGuess()
+    {
+        int currMaxScore = 0;
+        string currBestPermutation = "";
+        
+        foreach (var permutation in possiblePermutations)
+        {
+            int currScore = CalculateScore(permutation);
+
+            if (currMaxScore > currScore) continue;
+            
+            currMaxScore = currScore;
+            currBestPermutation = permutation;
+        }
+        
+        return currBestPermutation;
+    }
+
+    private int CalculateScore(string permutation)
+    {
+        Dictionary<Tuple<int, int>, int> resultScores = new Dictionary<Tuple<int, int>, int>();
+        int worstCase = 0;
+
+        foreach (var possibility in possiblePermutations)
+        {
+            Tuple<int, int> res = CompareBullsCows(permutation, possibility);
+            
+            if (!resultScores.ContainsKey(res)) resultScores[res] = 0;
+            
+            resultScores[res]++;
+        }
+        
+        foreach (var pair in resultScores)
+        {
+            worstCase = Math.Max(pair.Value, worstCase);
+        }
+        
+        return possiblePermutations.Count - worstCase;
+    }
+    
     private void PruneCombinations()
     {
+        if (possiblePermutations.Count == 0) return;
+        
         List<string> toDelete = new List<string>();
         
         foreach (var permutation in possiblePermutations)
         {
-            if (!CompareBullsCows(currentGuess, permutation))
+            Tuple<int, int> currCompar = CompareBullsCows(currentGuess, permutation);
+            if(!(currCompar.Item1 == currentBulls && currCompar.Item2 == currentCows))
             {
                 toDelete.Add(permutation);
             }
@@ -194,8 +235,9 @@ public class GameControl : MonoBehaviour
         }
     }
     
-    private bool CompareBullsCows(string current, string toCompare)
+    private Tuple<int,int> CompareBullsCows(string current, string toCompare)
     {
+        
         int compBulls = 0;
         int compCows = 0;
 
@@ -208,7 +250,10 @@ public class GameControl : MonoBehaviour
                 if (j != i && current[i] == toCompare[j]) compBulls++;
             }
         }
-        return compBulls == currentBulls && compCows == currentCows;
+
+        Tuple<int, int> ans = new Tuple<int, int>(compBulls,compCows);
+
+        return ans;
     }
 
     public void ReloadScene()
